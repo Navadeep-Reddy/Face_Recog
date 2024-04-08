@@ -1,6 +1,7 @@
 import face_recognition as fr
 import glob
 import os
+import sys
 
 #List for paths of known faces
 face_path = []
@@ -12,9 +13,9 @@ encoding_store = []
 name_store = []
 
 #List for possible file types
-file_types = ["*.jpg", "*.png", "*.svg", "*.gif", "*.webp"]
+file_types = ["*.jpg", "*.png", "*.svg", "*.gif", "*.webp", "*.avif"]
 
-location = "/home/navadeep/Downloads/Faces"
+location = "Faces/"
 
 #Get path of photos of all recorded people from the stored location
 for i in file_types:
@@ -30,10 +31,10 @@ for p in face_path:
     encoding_store.append(encoding)
 
     #Store the name of the face
-    name_store.append(p[len(location) + 1: -4:])
+    name_store.append(p[len(location): -4:])
 
 #Loading unknown faces and getting its encodings
-unknown_face = fr.load_image_file("/home/navadeep/Downloads/aku.png")
+unknown_face = fr.load_image_file(sys.argv[1])
 unknown_encoding = fr.face_encodings(unknown_face)
 
 #Looping through the encodings found and checking if they match
