@@ -39,6 +39,8 @@ unknown_encoding = fr.face_encodings(unknown_face)
 
 #Looping through the encodings found and checking if they match
 for single_encoding in unknown_encoding:
+    #Variable for tracking if any faces have been found
+    found = True
 
     #Boolean list after comparing unknown_encoding to every encoding in data set
     match_list = fr.compare_faces(encoding_store, single_encoding)
@@ -46,9 +48,10 @@ for single_encoding in unknown_encoding:
     if True in match_list:
         first_match_index = match_list.index(True)
         print(name_store[first_match_index])
+        found = False
 
-    else:
-        print("No matches found")
+if found:
+    print("No matches found")
 
 
 
