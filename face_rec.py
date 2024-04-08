@@ -49,9 +49,8 @@ for single_encoding in unknown_encoding:
         first_match_index = match_list.index(True)
         print(name_store[first_match_index])
         found = False
-
-if found:
-    print("No matches found")
+    else:
+        print("Unknown Individual")
 
 
 
