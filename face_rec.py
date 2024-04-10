@@ -37,6 +37,9 @@ for p in face_path:
 unknown_face = fr.load_image_file(sys.argv[1])
 unknown_encoding = fr.face_encodings(unknown_face)
 
+#variable for numbering unknown individuals
+var = 1
+
 #Looping through the encodings found and checking if they match
 for single_encoding in unknown_encoding:
     #Variable for tracking if any faces have been found
@@ -50,9 +53,10 @@ for single_encoding in unknown_encoding:
         print(name_store[first_match_index])
         found = False
     else:
-        print("Unknown Individual")
 
-
+        print(f"Unknown Individual {var}")
+        print(single_encoding)
+        var += 1
 
 
 
